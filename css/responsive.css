@@ -1,0 +1,62 @@
+@media screen and (max-width:768px) {
+
+    .col-left header {
+        display: none;
+    }
+
+    .notification {
+        display: none;
+    }
+
+    .research-bar {
+        display: none;
+    }
+
+    .scroll-contacts .text-profile {
+        display: none;
+    }
+
+    .scroll-contacts .time {
+        display: none;
+    }
+
+    .col-left {
+        width: auto;
+    }
+
+    .col-right {
+        width: 100%;
+    }
+
+    .scroll-contacts {
+        overflow: scroll;
+        padding-top: 0px;
+    }
+
+    .container {
+     width: 100%;
+     padding: 0;
+     height: 100%;
+    }
+
+}
+
+@media screen and (max-width:480px) {
+    
+    .col-right {
+        width: 100%;
+        height: 100%;
+    }
+
+    .col-left {
+        display: none;
+    }
+
+    .col-right .icons-nav-right {
+        display: none; 
+    }
+
+    .col-right .chat-bar .button-emoji {
+        display: none; 
+    }
+}
