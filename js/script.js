@@ -4,8 +4,18 @@ createApp({
     data() {
         return {
 
+            // ricerca nella chat
+            search: '',
+
             // indice attivo nel curChat
             activeIndex: 0,
+
+            // Nuovo messaggio
+            newMessage: {
+                date: '',
+                message: '',
+                status: 'sent'
+            },
 
             // Creo il mio array di chat
             contacts: [
@@ -159,5 +169,18 @@ createApp({
         activeChat: function(clickedIndex) {
             this.activeIndex = clickedIndex;
         },
+
+        sendMessage: function(){
+            this.contacts[this.activeIndex].messages.push({...this.newMessage})
+            this.newMessage.message = ''
+
+            setTimeout(() => {
+                this.contacts[this.activeIndex].messages.push({
+                    date:'',
+                    message: 'ok',
+                    status: 'received'
+                })
+            }, 1000);
+        }
     }
 }).mount("#app");

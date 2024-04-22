@@ -55,8 +55,8 @@
                     <div>
                         <div class="research-bar flex">
                             <button class="button-search"><i class="fa-solid fa-magnifying-glass"></i></button>
-                            <label for="search"></label>
-                            <input id="search" type="search" placeholder="Cerca o inizia una nuova chat">
+                            <label for="searchProfile"></label>
+                            <input type="text" placeholder="Cerca o inizia una nuova chat" id="search" v-model="search">
                         </div>
                     </div>
                     <!-- /search-bar -->
@@ -64,7 +64,7 @@
                 <!-- scroll-contacts -->
                 <div class="scroll-contacts flex dir-column">
                     <div class="flex border-bottom-1 p-20 justify-content-between" id="contact"
-                        v-for="(curChat, index) in contacts" @click="activeChat(index)">
+                        v-for="(curChat, index) in contacts" @click="activeChat(index)"  v-show='curChat.name.toLowerCase().includes(search.toLowerCase())'>
                         <div class="info-contact flex gap-20">
                             <div class="icon-profile">
                                 <img class="icon-profile" :src="`${curChat.avatar}`" alt="">
@@ -88,7 +88,7 @@
             <!-- /Col-left -->
 
             <!-- Col-right -->
-            <div class="col-right flex dir-column justify-content-between">
+            <div class="col-right flex dir-column justify-content-between container-mess">
                 <!-- header -->
                 <header class="flex justify-content-between align-items-center p-20">
                     <div class="info-contact flex">
@@ -113,10 +113,10 @@
 
                 <!-- main -->
                 <div class="grow2" id="chatSpace">
-                    <div class="container-mess flex dir-column pt-40 pr-20"
+                    <div class="flex dir-column pt-40 pr-20 pl-20"
                         v-for="curMessage in contacts[activeIndex].messages">
-                        <div class="justify-content-end flex ">
-                            <div class="mess-right flex justify-content-between">
+                        <div class="flex " :class="{ 'justify-content-start': curMessage.status == 'received', 'justify-content-end': curMessage.status == 'send' }">
+                            <div class="flex justify-content-between" :class="{ 'mess-left': curMessage.status == 'received', 'mess-right': curMessage.status == 'send' }">
                                 <div>
                                     <p>{{curMessage.message}}</p>
                                 </div>
@@ -128,8 +128,9 @@
                                 </div>
                             </div>
                         </div>
-
                     </div>
+
+
                     <!-- <div class="mess-left flex">
                         <div>
                             <p>{{curMessage.message}}</p>
@@ -141,7 +142,6 @@
                             </div>
                             <p>16:15</p>
                         </div>
-
                     </div> -->
 
                 </div>
@@ -151,8 +151,8 @@
                         <i class="fa-regular fa-face-smile"></i>
                     </button>
 
-                    <label for="chat"></label>
-                    <input id="chat" type="text" placeholder="Scrivi un messaggio">
+                    <label for="sentMessage"></label>
+                    <input type="text" class="write-message" id="chat" placeholder="Scrivi un messaggio" id="sentMessage" v-model.trim="newMessage.message" @keyup.enter="sendMessage">
 
                     <button class="button-emoji">
                         <i class="fa-solid fa-microphone"></i>
