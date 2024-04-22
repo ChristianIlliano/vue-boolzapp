@@ -3,6 +3,10 @@ const { createApp } = Vue;
 createApp({
     data() {
         return {
+
+            // indice attivo nel curChat
+            activeIndex: 0,
+
             // Creo il mio array di chat
             contacts: [
                 {
@@ -37,12 +41,12 @@ createApp({
                     messages: [
                         {
                             date: '22/04/2024 13:59:45',
-                            message: 'sei andata dal medico?',
+                            message: 'che hai fatto oggi?',
                             status: 'send'
                         },
                         {
                             date: '22/04/2024 13:59:45',
-                            message: 'si, mi ha prescritto un medicinale',
+                            message: 'nada tu?',
                             status: 'received'
                         },
                         {
@@ -61,12 +65,12 @@ createApp({
                     messages: [
                         {
                             date: '22/04/2024 13:59:45',
-                            message: 'sei andata dal medico?',
+                            message: 'ti è piaciuto lo spettacolo?',
                             status: 'send'
                         },
                         {
                             date: '22/04/2024 13:59:45',
-                            message: 'si, mi ha prescritto un medicinale',
+                            message: 'no noioso',
                             status: 'received'
                         },
                         {
@@ -85,12 +89,12 @@ createApp({
                     messages: [
                         {
                             date: '22/04/2024 13:59:45',
-                            message: 'sei andata dal medico?',
+                            message: 'hai capito Vue Js?',
                             status: 'send'
                         },
                         {
                             date: '22/04/2024 13:59:45',
-                            message: 'si, mi ha prescritto un medicinale',
+                            message: 'si, mi sta salvando la vita',
                             status: 'received'
                         },
                         {
@@ -109,12 +113,12 @@ createApp({
                     messages: [
                         {
                             date: '22/04/2024 13:59:45',
-                            message: 'sei andata dal medico?',
+                            message: 'sei sveglia?',
                             status: 'send'
                         },
                         {
                             date: '22/04/2024 13:59:45',
-                            message: 'si, mi ha prescritto un medicinale',
+                            message: 'si, ho un mal di testa cane',
                             status: 'received'
                         },
                         {
@@ -133,12 +137,12 @@ createApp({
                     messages: [
                         {
                             date: '22/04/2024 13:59:45',
-                            message: 'sei andata dal medico?',
+                            message: 'che vuoi mangiare stasera?',
                             status: 'send'
                         },
                         {
                             date: '22/04/2024 13:59:45',
-                            message: 'si, mi ha prescritto un medicinale',
+                            message: 'non lo so',
                             status: 'received'
                         },
                         {
@@ -150,5 +154,10 @@ createApp({
                 },
             ]
         }
+    },
+    methods: {
+        activeChat: function(clickedIndex) {
+            this.activeIndex = clickedIndex;
+        },
     }
 }).mount("#app");

@@ -5,6 +5,11 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
+/* id */
+#chatSpace {
+    height: 100%;
+}
+
 img {
     max-width: 100%;
 }
@@ -24,6 +29,14 @@ img {
     padding: 40px;
 }
 
+.pt-40 {
+    padding-top: 40px;
+}
+
+.pr-20 {
+    padding-right: 20px;
+}
+
 .gap-20 {
     gap: 20px;
 }
@@ -33,6 +46,11 @@ img {
 }
 
 /* UTILITIES */
+
+.grow2 {
+    flex-grow: 2; /* default 0 */
+  }
+
 .flex {
     display: flex;
 }
@@ -163,7 +181,7 @@ img {
 }
 
 .container-mess {
-    height: calc(100% - 143px);
+    /* height: calc(100% - 143px); */
     overflow: scroll;
 }
 

@@ -62,10 +62,11 @@
                     <!-- /search-bar -->
                 </div>
                 <!-- scroll-contacts -->
-                <div class="scroll-contacts flex dir-column" >
-                    <div class="flex border-bottom-1 p-20 justify-content-between" id="contact" v-for="(curChat, index) in contacts">
-                        <div class="info-contact flex gap-20" >
-                            <div class="icon-profile" >
+                <div class="scroll-contacts flex dir-column">
+                    <div class="flex border-bottom-1 p-20 justify-content-between" id="contact"
+                        v-for="(curChat, index) in contacts" @click="activeChat(index)">
+                        <div class="info-contact flex gap-20">
+                            <div class="icon-profile">
                                 <img class="icon-profile" :src="`${curChat.avatar}`" alt="">
                             </div>
                             <div class="text-profile">
@@ -87,15 +88,15 @@
             <!-- /Col-left -->
 
             <!-- Col-right -->
-            <div class="col-right">
+            <div class="col-right flex dir-column justify-content-between">
                 <!-- header -->
                 <header class="flex justify-content-between align-items-center p-20">
                     <div class="info-contact flex">
                         <div class="icon-profile">
-                            <img class="icon-profile" src="./img/avatar_1.jpg" alt="">
+                            <img class="icon-profile" :src="`${contacts[activeIndex].avatar}`" alt="">
                         </div>
                         <div class="text-profile">
-                            <h1>Michele</h1>
+                            <h1>{{contacts[activeIndex].name}}</h1>
                             <p>Lorem ipsum dolor sit amet</p>
                         </div>
                     </div>
@@ -111,29 +112,27 @@
                 <!-- /header -->
 
                 <!-- main -->
-                <div class="container-mess flex dir-column p-40">
-                    <div class="justify-content-end flex">
-                        <div class="mess-right flex">
-                            <div>
-                                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quae minima dicta
-                                    perspiciatis iure blanditiis explicabo qui id, praesentium totam harum quas
-                                    repellendus quod sequi velit odit, molestiae exercitationem libero. Magni. lore</p>
-                            </div>
-                            <div class="time flex dir-column justify-content-between align-items-end">
-                                <div class="chevron">
-                                    <i class="fa-solid fa-angle-down"></i>
+                <div class="grow2" id="chatSpace">
+                    <div class="container-mess flex dir-column pt-40 pr-20"
+                        v-for="curMessage in contacts[activeIndex].messages">
+                        <div class="justify-content-end flex ">
+                            <div class="mess-right flex justify-content-between">
+                                <div>
+                                    <p>{{curMessage.message}}</p>
                                 </div>
-                                <p>16:15</p>
+                                <div class="time flex dir-column justify-content-between align-items-end">
+                                    <div class="chevron">
+                                        <i class="fa-solid fa-angle-down"></i>
+                                    </div>
+                                    <p>{{curMessage.date}}</p>
+                                </div>
                             </div>
                         </div>
 
-
                     </div>
-                    <div class="mess-left flex">
+                    <!-- <div class="mess-left flex">
                         <div>
-                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quae minima dicta perspiciatis
-                                iure blanditiis explicabo qui id, praesentium totam harum quas repellendus quod sequi
-                                velit odit, molestiae exercitationem libero. Magni.</p>
+                            <p>{{curMessage.message}}</p>
                         </div>
 
                         <div class="time flex dir-column justify-content-between align-items-end">
@@ -143,11 +142,11 @@
                             <p>16:15</p>
                         </div>
 
-                    </div>
+                    </div> -->
 
                 </div>
 
-                <div class="chat-bar flex ">
+                <div class="chat-bar flex">
                     <button class="button-emoji">
                         <i class="fa-regular fa-face-smile"></i>
                     </button>
@@ -165,9 +164,6 @@
                 <!-- /main -->
 
                 <!-- footer -->
-                <footer>
-
-                </footer>
                 <!-- /footer -->
             </div>
             <!-- /Col-right -->
