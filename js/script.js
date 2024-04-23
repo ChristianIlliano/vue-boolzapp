@@ -14,7 +14,7 @@ createApp({
             newMessage: {
                 date: '',
                 message: '',
-                status: 'sent'
+                status: 'send'
             },
 
             // Creo il mio array di chat
@@ -29,6 +29,8 @@ createApp({
                             date: '22/04/2024 13:59:45',
                             message: 'sei andata dal medico?',
                             status: 'send'
+
+                            
                         },
                         {
                             date: '22/04/2024 13:59:45',
@@ -181,6 +183,10 @@ createApp({
                     status: 'received'
                 })
             }, 1000);
-        }
+            
+        },
+
+        
+        
     }
 }).mount("#app");
